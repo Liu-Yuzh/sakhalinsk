@@ -1,0 +1,6 @@
+discord.py>=2.4
+aiohttp
+python-dotenv
+PyMuPDF
+pytesseract
+Pillow
