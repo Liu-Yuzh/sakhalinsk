@@ -117,3 +117,29 @@ async def resolve(s, text):
     if p:
         await add_s2(s, p)
     return p
+
+
+KINDLE_DEALS = "https://www.amazon.co.jp/kindle-dbs/browse?widgetId=ebooks-deals-storefront_KindleDailyDealsStrategy&sourceType=recs"
+_DEAL_RE = re.compile(r'<a aria-label="([^"]+)" class="a-link-normal" href="/gp/product/(B[0-9A-Z]{9})')
+_PRICE_RE = re.compile(r'a-color-price[^>]*>\s*(￥\s*[\d,]+)')
+
+
+def parse_kindle_deals(page):
+    """Kindle 日替わりセールのページから (書名, URL, 価格) を取る"""
+    out = []
+    # shortcut: Amazon のページの HTML に頼るので、作りが変わると 0 件になる。そうなったら正規表現を直す
+    for block in page.split("browse-clickable-item")[1:]:
+        m = _DEAL_RE.search(block)
+        if m:
+            price = _PRICE_RE.search(block)
+            out.append((html.unescape(m.group(1)), f"https://www.amazon.co.jp/dp/{m.group(2)}",
+                        price.group(1).replace(" ", "") if price else ""))
+    return out
+
+
+async def kindle_deals(s):
+    ua = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) "
+                        "Chrome/130.0 Safari/537.36", "Accept-Language": "ja"}  # Bot の UA だと弾かれる
+    async with s.get(KINDLE_DEALS, headers=ua) as r:
+        r.raise_for_status()
+        return parse_kindle_deals(await r.text())

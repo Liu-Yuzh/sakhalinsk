@@ -31,6 +31,10 @@ YuzhNote（Cosense）と組み合わせて使う、研究メモと身の回り�
 - 読み間違いは ✏️ で直せます。写真がなくても `680 昼食` のように書けば記録できます。
 - `/kakeibo` で月の集計と CSV（Excel で開ける形）を出します。
 
+### Kindle の日替わりセール（`#kindle`）
+- 毎朝 `KINDLE_HOUR` 時（初期設定は7時）に、その日の Kindle 日替わりセールの書名・価格・リンクを流します。`/kindle_now` で今すぐ流せます。
+- Amazon のページから読み取っているので、ページの作りが変わると読めなくなります。そのときはチャンネルに知らせます。
+
 ### まとめて探す（`#search`）
 - Discord のメッセージ、Cosense の全ページ、レシートの文字、論文 PDF の序論・結論を、一つの全文検索にまとめています。日本語の部分一致で探せます。
 - Discord に貼ったリンクは、**リンク先のページのタイトルも取って一緒に入れる**ので、URL しか貼っていなくても中身の言葉で見つかります。
@@ -79,6 +83,7 @@ systemctl --user restart sakhalinsk
 | `cogs/today.py` | 毎日のボード（タスク・習慣） |
 | `cogs/remind.py` | リマインダー |
 | `cogs/kakeibo.py` | 家計簿 |
+| `cogs/kindle.py` | Kindle の日替わりセール |
 | `cogs/search.py` | まとめて探す・未整理のリンク |
 | `sources.py` / `cosense.py` | 書誌の取得 ／ Cosense の読み書き |
 | `jptime.py` / `pdftools.py` / `receipt.py` / `search_index.py` | 日時の読み取り ／ PDF ／ OCR ／ 全文検索 |

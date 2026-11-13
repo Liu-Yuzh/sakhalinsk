@@ -109,4 +109,10 @@ search_index.put("cosense", "p1", "Discordで研究メモ", "論文を管理す�
 search_index.put("discord", "1", "#雑談", "🔗 検索エンジンの仕組み", "u2", "2026-11-10")
 assert {h["ref"] for h in search_index.search("検索")} == {"p1", "1"}  # 2文字は LIKE で探す
 assert [h["ref"] for h in search_index.search("@discord 検索エンジン")] == ["1"]
+page = """<div class="browse-clickable-item"><a aria-label="本 &amp; 本" class="a-link-normal" href="/gp/product/B00KS3FCUW?ref_=x">
+<span class="a-size-base a-color-price a-text-bold">
+   ￥ 1,429</span></div><div class="browse-clickable-item"><a aria-label="値段なし" class="a-link-normal" href="/gp/product/B012VLCNCI?r">"""
+assert sources.parse_kindle_deals(page) == [("本 & 本", "https://www.amazon.co.jp/dp/B00KS3FCUW", "￥1,429"),
+                                            ("値段なし", "https://www.amazon.co.jp/dp/B012VLCNCI", "")]
+
 print("ok")

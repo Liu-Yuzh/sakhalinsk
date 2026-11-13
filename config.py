@@ -50,6 +50,8 @@ KAKEIBO = _id("KAKEIBO_CHANNEL_ID")
 CATEGORIES = _list("KAKEIBO_CATEGORIES", "食費,日用品,交通,書籍・研究,趣味,医療,その他")
 OCR_LANG = os.getenv("OCR_LANG", "jpn+eng")
 SEARCH = _id("SEARCH_CHANNEL_ID")
+KINDLE = _id("KINDLE_CHANNEL_ID")
+KINDLE_HOUR = int(os.getenv("KINDLE_HOUR", "7"))  # セールは 0 時に切り替わる
 
 
 def now():

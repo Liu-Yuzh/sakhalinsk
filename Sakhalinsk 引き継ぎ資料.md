@@ -42,6 +42,7 @@ Bot はサーバー veritas（ユーザー yuzh）の `~/sakhalinsk` に置き�
 | `cogs/today.py` | 毎日のボード（タスクと習慣） |
 | `cogs/remind.py` | リマインダー |
 | `cogs/kakeibo.py` | 家計簿 |
+| `cogs/kindle.py` | Kindle の日替わりセール |
 | `cogs/search.py` | まとめて探す、索引の更新、未整理のリンク |
 | `sources.py` | arXiv・Crossref・Semantic Scholar・Web ページからの書誌の取得 |
 | `cosense.py` | Cosense の読み書きと、ページ本文の組み立て |

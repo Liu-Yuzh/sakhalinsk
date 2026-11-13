@@ -7,7 +7,7 @@ from discord.ext import commands
 import config
 import cosense
 
-EXTENSIONS = ["cogs.papers", "cogs.arxiv", "cogs.search", "cogs.remind", "cogs.today", "cogs.kakeibo"]
+EXTENSIONS = ["cogs.papers", "cogs.arxiv", "cogs.search", "cogs.remind", "cogs.today", "cogs.kakeibo", "cogs.kindle"]
 
 
 class Sakhalinsk(commands.Bot):
